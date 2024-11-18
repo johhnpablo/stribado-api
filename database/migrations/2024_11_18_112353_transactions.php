@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('id');
+            $table->uuid('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->string('icon');
@@ -23,6 +23,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('');
+        Schema::dropIfExists('transactions');
     }
 };

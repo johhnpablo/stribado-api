@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('', function (Blueprint $table) {
-            $table->id();
+        Schema::create('categories', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->uuid('transaction_id');
-            $table->foreign('transaction_id')->references('id')->on('transaction');
+            $table->foreign('transaction_id')->references('id')->on('transactions');
             $table->string('name');
             $table->string('slug');
             $table->string('type');
@@ -20,6 +20,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('');
+        Schema::dropIfExists('categories');
     }
 };
